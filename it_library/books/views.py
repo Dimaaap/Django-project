@@ -10,7 +10,8 @@ def show_all_books_view(request):
     all_books = get_all_objects_from_db_service(Book).prefetch_related('categories', 'authors')
     count_books = get_all_objects_from_db_service(Book).count
     page_obj = get_pagination_service(request, all_books, 10)
-    count_books_in_categories = annotate_models_service(Category, Count, 'book').order_by('-book__count')
+    count_books_in_categories = annotate_models_service(Category, Count, 'book')\
+        .order_by('-book__count')
     context = {'books': all_books, 'count_books': count_books, 'page_obj': page_obj,
                'count_books_in_categories': count_books_in_categories}
     return render(request, 'books/show_all_books.html', context)
