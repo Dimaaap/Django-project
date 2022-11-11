@@ -1,0 +1,39 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'users/css/register_user.css' %}">
+{% endblock %}
+
+{% block body %}
+    {% if errors %}
+        <div class="alert alert-danger">
+            {{ errors }}
+        </div>
+    {% endif %}
+    <div class="container">
+        <center><div class="content-section">
+            <form method="post" class="register-form">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-1" style="margin-top: -15px;">Реєстрація</legend>
+                    {% for field in form %}
+                        {{ field.label_tag }} {{ field }}
+                    {% endfor %}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        Зареєструватись
+                    </button>
+                </div>
+                <div class="border-top pt-3">
+                <small class="text-muted">Вже маєте акаунт?
+                    <a class="ml-2" href="{% url 'user_login' %}">
+                        Ввійдіть
+                    </a>
+                </small>
+            </div>
+            </form>
+        </div></center>
+    </div>
+{% endblock %}

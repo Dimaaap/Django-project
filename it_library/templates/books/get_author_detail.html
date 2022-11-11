@@ -1,0 +1,40 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'books/css/get_author_detail.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <center><div class="card-top">
+            <center><h5 class="card-header-top">{{ author.fullname }}</h5></center>
+            <div class="card-body-top">
+                <p class="card-text-top">{{ author.biography }}</p>
+            </div>
+        </div></center>
+    </div>
+    <center><h4 class="page-header">
+        Всі книги автора {{ author.fullname }}:<span class="badge bg-secondary">{{all_author_books|length}}
+    </span></h4></center>
+    {% for book in all_author_books %}
+        <center><div class="card-group">
+        <div class="card">
+          <center><img src="{{ book.image.url }}" class="card-img-top" alt="..."
+                       style="max-width:150px;"></center>
+          <div class="card-body">
+            <div class="book-title">
+              <h5 class="card-title">{{ book.title }}</h5>
+            </div>
+            <a href="{% url 'show_book_detail' book.pk %}" class="btn btn-light">Детальніше</a>
+            <a href="{% url 'get_all_category' book.get_categories_id %}">
+                <h6 class="card-text" style="btn btn-link">
+                    {{ book.get_categories }}
+                </h6></a>
+            <hr>
+            <h6 class="book-price">{{ book.price }}$</h6>
+          </div>
+        </div>
+      </div></center>
+    {% endfor %}
+{% endblock %}

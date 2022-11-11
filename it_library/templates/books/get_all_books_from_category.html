@@ -1,0 +1,40 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+  <link rel="stylesheet" href="{% static 'books/css/get_all_books_from_category.css' %}">
+{% endblock %}
+{% block body %}
+  <center><h5>Всі книги з категорії {{ category }}:
+    <span class="badge bg-secondary">{{ all_books_from_category|length }}</span>
+  </h5></center>
+  <hr>
+  <div class="container">
+    {% if page_obj.has_previous %}
+
+    {% endif %}
+    {% for book in all_books_from_category %}
+    <center><div class="card-group">
+        <div class="card">
+          <center><img src="{{ book.image.url }}" class="card-img-top" alt="..."></center>
+          <div class="card-body">
+            <div class="book-title">
+              <h5 class="card-title">{{ book.title }}</h5>
+            </div>
+            <div class="book-description">
+              <p class="card-text">{{ book.description|truncatewords:6 }}</p>
+            </div>
+            <a href="{% url 'show_book_detail' book.pk %}" class="btn btn-light">Детальніше</a>
+            {% for author in book.authors.all %}
+              <a href="{% url 'get_author_detail' author.pk%}">
+                <h6 class="card-text" style="margin-top: -5px;">{{ book.get_authors }}</h6>
+              </a>
+            {% endfor %}
+            <hr>
+            <h6 class="book-price">{{ book.price }}$</h6>
+          </div>
+        </div>
+    </div></center>
+    {% endfor %}
+  </div>
+{% endblock %}

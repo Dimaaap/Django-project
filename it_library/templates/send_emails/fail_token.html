@@ -1,0 +1,16 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+    <link rel='stylesheet' href="{% static 'send_emails/css/fail_token.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Помилка!</h4>
+          <hr>
+          <p>Введено неправильний токен,доступ на цю сторінку можливий лише через email</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'cart/css/cart_detail.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="table-header">Кошик покупок</h1>
+
+        <table class="cart">
+            <thead>
+                <tr>
+                    <th style="margin-left: 10px;">Зображення</th>
+                    <th>Назва книги</th>
+                    <th>Видалити</th>
+                    <th>Ціна</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                    {% with book=item.book %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'show_book_detail' book.id %}">
+                                    <img src="{{ book.image.url }}">
+                                </a>
+                            </td>
+                            <td>{{ book.title }}</td>
+                            <td><a href="{% url 'cart:cart_remove' book.id %}" class="btn btn-outline-primary">Видалити</a></td>
+                            <td class="num"><b>{{ item.price }}</b></td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+                <tr class="total">
+                    <td><b>Всього: </b></td>
+                    <td colspan="2"></td>
+                    <td class="num"><b>{{ cart.get_total_price }}</b></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="text-right">
+            <a href="{% url 'show_all_books' %}" class="btn btn-info">Всі книги</a>
+            <a href="#" class="btn btn-warning">Оформити замовлення</a>
+        </p>
+    </div>
+{% endblock %}

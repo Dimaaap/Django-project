@@ -1,0 +1,26 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+  <link rel="stylesheet" href="{% static 'users/css/logout_user.css' %}">
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Ви розавторизувались</h4>
+      <hr>
+      <p>Ви вийшли зі свого облікового запису,щоб знову отримати доступ до контенту,який доступний лише авторизованим
+        користувачам,
+        <a href="{% url 'user_login' %}">
+          Авторизуйтесь
+        </a>.
+        Або повернутись на
+        <a href="{% url 'index_page' %}">
+          Головну сторінку
+        </a>
+
+      </p>
+    </div>
+  </div>
+{% endblock %}

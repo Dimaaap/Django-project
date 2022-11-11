@@ -1,0 +1,124 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #E6E6E6;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
+.headline {
+    margin: -30px;
+    max-width: 1300px;
+
+}
+
+.display-2 {
+    margin-bottom: 5px;
+    margin-top: -50px;
+}
+
+.search-box {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(0%, 30%);
+    background: #2F3640;
+    height: 45px;
+    border-radius: 40px;
+    padding: 5px;
+}
+
+.search-btn {
+    color: #1da1f3;
+    float: right;;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.search-box:hover > .search-txt {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.search-box:hover > .search-btn {
+    background: white;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    transition: 0.4s;
+}
+
+img {
+    max-width: 150px;
+    height: 200px;
+}
+
+.card {
+    margin-top: 3px;
+    max-width: 240px;
+    min-width: 200px;
+    margin-left: 5px;
+    height: 515px;
+}
+
+.book-description {
+    height: 120px;
+    font-family: Helvetica;
+    margin-top: 2px;
+}
+
+.book-title {
+    height: 95px;
+}
+
+.card-group {
+    margin-left: 10px;
+    float: left;
+    width: 17%;
+}
+
+.btn-light {
+    margin-top: -35px;
+}
+
+.book-price {
+    margin-top:-10px;
+}
+
+hr {
+    margin-top: 10px;
+}
+
+.pagination {
+    float: right;
+    margin-right: 650px;
+    margin-top: 10px;
+}

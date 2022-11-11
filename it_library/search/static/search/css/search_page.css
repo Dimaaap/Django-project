@@ -1,0 +1,137 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #E6E6E6;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
+.headline {
+    margin: -30px;
+    max-width: 1300px;
+
+}
+
+.display-2 {
+    margin-bottom: 5px;
+    margin-top: -50px;
+}
+
+.search-box {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(0%, 30%);
+    background: #2F3640;
+    height: 45px;
+    border-radius: 40px;
+    padding: 5px;
+}
+
+.search-btn {
+    color: #1da1f3;
+    float: right;;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.search-box:hover > .search-txt {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.search-box:hover > .search-btn {
+    background: white;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    transition: 0.4s;
+}
+
+img {
+    max-width: 150px;
+    margin-left: 10px;
+    margin-top: 5px;
+    border-right: 1px solid black;
+    /*max-height: 200px;*/
+    height: 150px;
+}
+
+.card {
+    /*float: left;*/
+    /*border-radius: 30px 30px;*/
+    border-radius: 20px 20px;
+    margin-top: 10px;
+    margin-left: 400px;
+    max-width: 600px;
+    height: 280px;
+}
+
+.card-title {
+    max-height: 100px;
+    min-height: 50px;
+    margin-left: 70px;
+    width: 200px;
+    position: center;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.card-text {
+    height: 70px;
+    margin-left: -30px;
+    max-width: 350px;
+    text-align: left;
+}
+
+.alert {
+    width: 700px;
+    margin-left: 400px;
+    margin-top: 190px;
+    height: 200px;
+}
+
+.alert-text {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    margin-left: 570px;
+    font-family: Helvetica;
+    width: 400px;
+    margin-top: -10px;
+    margin-bottom: 100px;
+}
+
+.card-button {
+    margin-left: 90px;
+}

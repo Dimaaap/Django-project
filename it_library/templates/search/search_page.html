@@ -1,0 +1,40 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'search/css/search_page.css' %}">
+{% endblock %}
+
+{% block body %}
+    {% if entry_list|length > 0 %}
+        <center><h3>Знайдено книг:
+            <span class="badge bg-secondary">{{ entry_list|length }}</span>
+        </h3></center>
+        <hr>
+        {% for book in entry_list %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ book.image.url }}" class="img-fluid rounded-start" alt="..."
+                        style="max-width: 150px; max-height: 300px; min-width: 130px;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <p class="card-text">{{ book.description|truncatewords:12 }}</p>
+                            <div class="card-button">
+                                <a class="btn btn-outline-secondary"
+                                   href="{% url 'show_book_detail' book.pk %}">
+                                    Дізнатися більше
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% else %}
+        {% include 'inc/_fail_search.html' %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'books/css/show_book_detail.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="card mb-3" style="max-width: 900px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ book.image.url }}" class="img-fluid rounded-start" alt="..."
+                    style="max-width: 170px; margin: 10px; min-width: 10px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">{{ book.description }}</p>
+                        <div class="author-button">
+                            {% for author in book.authors.all %}
+                                <a href="{% url 'get_author_detail' author.pk %}" class="btn btn-secondary">{{ book.get_authors }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="category-button">
+                            {% for category in book.categories.all %}
+                                <a href="{% url 'get_all_category' category.pk %}" class="btn btn-secondary">{{category.title}}</a>
+                            {% endfor %}
+                        </div>
+                        <center><h5 class="book-price">Ціна:{{ book.price }}грн</h5></center>
+                        {% if not book_in_cart %}
+                            <form action="{% url 'cart:cart_add' book.id %}" method="post">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <input type="submit" value="У кошик" class="btn btn-info">
+
+                            </form>
+                        {% else %}
+                            <div class="in-cart-button">
+                                <button type="button" class="btn btn-secondary" disabled>
+                                    Книга вже у кошику
+                                </button>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

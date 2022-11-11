@@ -1,0 +1,43 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'books/css/show_all_books.css' %}">
+{% endblock %}
+
+{% block body %}
+    <center><h3 style="font-family:Arial;">Всього книг: <span class="badge bg-secondary">{{ count_books }}</span></h3></center>
+    <hr>
+    <div class="container" style="margin-top:5px;">
+        <h5 class="category-header">Всі категорії:</h5>
+        {% include 'inc/_all_categories_count.html' %}
+        {% for book in page_obj %}
+            <center><div class="card mb-3" style="max-width: 600px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ book.image.url }}" class="img-fluid rounded-start" alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title" style="margin-right: 70px;">{{ book.title }}</h5>
+                            <p class="card-text" style="margin-right: 50px;">{{ book.description|safe|truncatewords:10 }}</p>
+                            {% for author in book.authors.all %}
+                            <div class="book-authors">
+                                <a class="btn btn-outline-dark" href="{% url 'get_author_detail' author.pk %}"><h6 class="card-text-authors">{{ book.get_authors }}</h6></a>
+                            </div>
+                            {% endfor %}
+                            <div class="book-categories">
+                                <a class="btn btn-outline-dark" href="{% url 'get_all_category' book.get_categories_id %}">
+                                    <center><h6 class="card-category">{{book.get_categories}}</h6></center>
+                                </a>
+                            </div>
+                            <a class="btn btn-light" style="margin-right: 30px;" href="{% url 'show_book_detail' book.pk %}">Дізнатись більше</a>
+                            <bold><h5 class="book-price">{{ book.price }}грн</h5></bold>
+                        </div>
+                    </div>
+                </div>
+            </div></center>
+        {% endfor %}
+    </div>
+    {% include 'inc/_pagination.html'%}
+{% endblock %}

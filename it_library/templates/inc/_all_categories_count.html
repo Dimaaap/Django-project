@@ -1,0 +1,13 @@
+<div class="list-group" style="max-width: 200px;">
+    {% for category in count_books_in_categories %}
+        {% if category.book__count > 0 %}
+            <a href="{% url 'get_all_category' category.pk %}"
+               class="list-group-item list-group-item-action">
+                {{ category.title }}
+                <span class="badge text-bg-secondary">
+                    {{ category.book__count }}
+                </span>
+            </a>
+        {% endif %}
+    {% endfor %}
+</div>
