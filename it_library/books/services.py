@@ -25,15 +25,3 @@ def get_pagination_service(request, data_to_pagination, size_of_pagination):
     paginator = Paginator(data_to_pagination, size_of_pagination)
     page_number = request.GET.get('page')
     return paginator.get_page(page_number)
-
-
-# DELETED
-def temp_operations(a, b, c):
-    if c == '+':
-        return a + b
-    elif c == '-':
-        return a - b
-    elif c == '*':
-        return a * b
-
-

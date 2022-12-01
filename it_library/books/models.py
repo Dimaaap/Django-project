@@ -92,4 +92,3 @@ class Book(models.Model):
 
     def get_full_categories(self):
         iter_categories = iter(i.title for i in self.categories.all())
-        yield next(iter_categories)
